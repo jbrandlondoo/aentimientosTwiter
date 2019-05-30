@@ -11,9 +11,10 @@ app = Flask(__name__)
 def home():
 	dataResultPredit,score = train.getPredit()
 	dataPredit = train.dataPredit[0]
-	listReturn = numpy.array([dataResultPredit,dataPredit])
-	listReturn = listReturn.T
-	return render_template('home.html', listReturn = listReturn[0:20], score = score)
+	dataResultPredit = numpy.array(dataResultPredit)
+	dataPredit = numpy.array(dataPredit)
+
+	return render_template('home.html',dataPredit = dataPredit[0:20].T,dataResultPredit = dataResultPredit[0:20].T, score = score)
 
 if __name__ == '__main__':
 	app.run(debug=True)
