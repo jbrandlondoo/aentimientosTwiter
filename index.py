@@ -1,8 +1,8 @@
 from flask import Flask,render_template
 from sklearn.feature_extraction.text import HashingVectorizer
-import readDataPredit as read
 import trainModel as train
 import pandas as pd 
+import numpy
 
 
 app = Flask(__name__)
@@ -11,7 +11,9 @@ app = Flask(__name__)
 def home():
 	dataResultPredit,score = train.getPredit()
 	dataPredit = train.dataPredit[0]
-	return render_template('home.html', dataResultPredit=dataResultPredit, score = score, dataPredit=dataPredit)
+	listReturn = numpy.array([dataResultPredit,dataPredit])
+	listReturn = listReturn.T
+	return render_template('home.html', listReturn = listReturn[0:20], score = score)
 
 if __name__ == '__main__':
 	app.run(debug=True)

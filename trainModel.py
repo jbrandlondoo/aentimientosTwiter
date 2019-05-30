@@ -1,14 +1,11 @@
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import HashingVectorizer
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-import readTrain as read
 import cleanTxt as clean
+import xgboost as xgb
 import pandas as pd 
 import os
-from sklearn.feature_extraction.text import CountVectorizer
-import xgboost as xgb
 
 
 dataTrain = []

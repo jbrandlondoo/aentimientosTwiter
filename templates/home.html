@@ -14,7 +14,7 @@
 
 <div class="container">
 
-	<div class="bg-info">precision: {%score%}</div>
+	<div class="bg-info">precision: {{score}}</div>
 
 	<table class="table table-sm">
 	  <thead>
@@ -24,22 +24,19 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	  	{%i = 0%}
-	  	{%for f in dataResultPredit:%}
-	  		{%if f==0:%}
+	  	{%for item in listReturn:%}
+	  		{%if item[1]==0:%}
 			    <tr class="text-danger">
 			      <td>neg</td>
-			      <td >{%dataPredit[i]%}</td>
+			      <td >{{item[0]}}</td>
 			    </tr>
 			{%else:%}
 			    <tr class="text-success">
 			      <td>pos</td>
-			      <td >{%dataPredit[i]%}</td>
+			      <td >{{item[0]}}</td>
 			    </tr>
-			{%i += 1%}
-			{%if i == 50:
-				break
-				%}
+			{%endif%}
+		{% endfor %}
 
 	  </tbody>
 	</table>
